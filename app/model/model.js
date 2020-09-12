@@ -1,4 +1,4 @@
-var mysql = require('./server.js');
+var mysql = require('./db.js');
 
 var Report = function(report) {
     this.type = report.type;

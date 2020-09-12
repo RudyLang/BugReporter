@@ -1,6 +1,6 @@
 var Report = require("../model/model.js");
 
-exports.list_all_tasks = function (req, res) {
+exports.list_all_reports = function (req, res) {
     Report.getAllReports(function(err, report) {
         if (err) {
             res.send(err);
@@ -10,7 +10,7 @@ exports.list_all_tasks = function (req, res) {
     });
 };
 
-exports.create_a_task = function (req, res) {
+exports.create_a_report = function (req, res) {
     var newReport = new Report(req.body);
 
     if (!newReport.type || !newReport.comment) {
@@ -26,7 +26,7 @@ exports.create_a_task = function (req, res) {
     };
 };
 
-exports.read_a_task = function (req, res) {
+exports.get_a_report = function (req, res) {
     Report.getReportByID(req.params.reportID, function(err, report) {
         if (err) {
             res.send(err);
@@ -44,7 +44,7 @@ exports.update_a_report = function(req, res) {
     });
 };
 
-exports.delete_a_task = function(req, res) {
+exports.delete_a_report = function(req, res) {
     Report.remove(req.params.reportID, function(err, report) {
         if (err) {
             res.send(err);
