@@ -4,7 +4,6 @@
   >
     <v-list shaped>
       <v-list-item-group
-        v-model="model"
         multiple
       >
         <template v-for="(item, i) in items">
@@ -17,7 +16,7 @@
             v-else
             :key="`item-${i}`"
             :value="item"
-            active-class="deep-purple--text text--accent-4"
+            active-class="amber--text text--accent-1"
           >
             <template v-slot:default="{ active }">
               <v-list-item-content>
@@ -27,7 +26,7 @@
               <v-list-item-action>
                 <v-checkbox
                   :input-value="active"
-                  color="deep-purple accent-4"
+                  color="amber accent-4"
                 ></v-checkbox>
               </v-list-item-action>
             </template>
@@ -42,10 +41,8 @@
   export default {
     data: () => ({
       items: [
-        'Dog Photos',
-        'Cat Photos',
-        'Potatoes',
-        'Carrots',
+        'Null Reference',
+        'Undefined',
       ]
     }),
   }

@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      Nutrition
+    Reports
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -15,7 +15,9 @@
       :headers="headers"
       :items="desserts"
       :search="search"
+      :items-per-page="5"
     ></v-data-table>
+    <span>{{reports}}</span>
   </v-card>
 </template>
 
@@ -23,19 +25,17 @@
   export default {
     data () {
       return {
+        reports: {},
         search: '',
         headers: [
           {
-            text: 'Dessert (100g serving)',
+            text: 'Type',
             align: 'start',
-            sortable: false,
+            sortable: true,
             value: 'name',
           },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
+          { text: 'Comments', value: 'calories' },
+          { text: 'Timestamp', value: 'fat' },
         ],
         desserts: [
           {
@@ -119,6 +119,26 @@
             iron: '6%',
           },
         ],
+      }
+    },
+    async created() {
+      try {
+        let res = await this.$http({
+          url: 'http://localhost:3000/reports',
+          method: 'get',
+          timeout: 8000,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        if(res.status == 200){
+            console.log(res.status);
+        }
+        this.reports = res.data;    
+        return res.data;
+      }
+      catch (err) {
+        console.error(err);
       }
     },
   }

@@ -3,9 +3,11 @@
     <div id="title">Bug Reporter</div>
     <div id="container">
       <div id="item1" class="widget">
+        Trends
         <SparkLine/>
       </div>
       <div id="item2" class="widget">
+        Report Types
         <SelectionControl/>
       </div>
       <div class="break"></div>
@@ -78,12 +80,11 @@ body {
 }
 
 .widget {
-  background-color: rgb(83, 35, 35);
   text-align: left;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.2em;
   padding: 10px;
-  border: 1px solid #ffffff;
+  border: 1px solid #f3c940;
 }
 
 #item1 {
