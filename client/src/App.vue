@@ -1,41 +1,53 @@
 <template>
-  <div id="app">
-    <div class="title">Bug Reporter</div>
-    <div class="container">
+  <v-app id="app">
+    <div id="title">Bug Reporter</div>
+    <div id="container">
       <div id="item1" class="widget">Item 1</div>
       <div id="item2" class="widget">Item 2</div>
       <div class="break"></div>
       <div id="item3" class="widget">Item 3</div>
-      <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
+      <!--<HelloWorld/>-->
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
+
   components: {
-    //HelloWorld
-  }
-}
+//    HelloWorld,
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+html {
+  --scrollbarBG: #202129;
+  --thumbBG: #f3c940;
+}
 
 body {
   background-color: #000000;
   margin: 0;
 }
 
-.title {
+#title {
   color:  #f3c940;
   font-size: 2em;
   font-family: 'Rajdhani', sans-serif;
-  margin-top: -34px;
   text-align: left;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 40px;
 }
 
 #app {
@@ -45,20 +57,15 @@ body {
   text-align: center;
   color: #fffcd1;
   background-color: #202129;
-  height: 90vh;
-  width: 95vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+
 }
 
-.container {
+#container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: 100%;
+  margin: 0px 80px 80px 80px;
 }
 
 .widget {
@@ -85,5 +92,22 @@ body {
 .break {
   flex-basis: 100%;
   height: 0;
+}
+
+/*Customize Scrollbar*/
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
 }
 </style>
