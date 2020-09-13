@@ -19,7 +19,7 @@ Report.createReport = function (newReport, result) {
 };
 
 Report.getReportByID = function (reportID, result) {
-    mysql.query("SELECT report FROM reports WHERE id = ?", reportID, function (err, res) {
+    mysql.query("SELECT * FROM reports WHERE id = ?", reportID, function (err, res) {
         if (err) {
             result(err, null);
         }
