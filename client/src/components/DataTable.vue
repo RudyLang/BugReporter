@@ -33,7 +33,7 @@
             sortable: true,
             value: 'type',
           },
-          { text: 'Comments', value: 'comment' },
+          { text: 'Comment', value: 'comment' },
           { text: 'Timestamp', value: 'timestamp' },
         ],
       }

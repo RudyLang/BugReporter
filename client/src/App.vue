@@ -4,7 +4,7 @@
     <div id="container">
       <div id="item1" class="widget">
         Trends
-        <SparkLine/>
+        <ChartContainer/>
       </div>
       <div id="item2" class="widget">
         Report Types
@@ -20,16 +20,16 @@
 
 <script>
 import DataTable from './components/DataTable';
-import SparkLine from './components/SparkLine';
 import SelectionControl from './components/SelectionControl';
+import ChartContainer from './components/ChartContainer';
 
 export default {
   name: 'App',
 
   components: {
     DataTable,
-    SparkLine,
     SelectionControl,
+    ChartContainer,
   },
 
   data: () => ({
