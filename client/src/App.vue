@@ -2,23 +2,32 @@
   <v-app id="app">
     <div id="title">Bug Reporter</div>
     <div id="container">
-      <div id="item1" class="widget">Item 1</div>
-      <div id="item2" class="widget">Item 2</div>
+      <div id="item1" class="widget">
+        <SparkLine/>
+      </div>
+      <div id="item2" class="widget">
+        <SelectionControl/>
+      </div>
       <div class="break"></div>
-      <div id="item3" class="widget">Item 3</div>
-      <!--<HelloWorld/>-->
+      <div id="item3" class="widget">
+        <DataTable/>
+      </div>
     </div>
   </v-app>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld';
+import DataTable from './components/DataTable';
+import SparkLine from './components/SparkLine';
+import SelectionControl from './components/SelectionControl';
 
 export default {
   name: 'App',
 
   components: {
-//    HelloWorld,
+    DataTable,
+    SparkLine,
+    SelectionControl,
   },
 
   data: () => ({
