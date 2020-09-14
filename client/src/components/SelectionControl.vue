@@ -43,6 +43,8 @@
   export default {
     data: () => ({
       items: [
+        'Crash',
+        'MemoryLeak',
         'NullReference',
         'Undefined',
       ],
