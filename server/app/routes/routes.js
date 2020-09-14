@@ -11,5 +11,5 @@ module.exports = function(app) {
         .delete(reports.delete_a_report);
     
     app.route('/filter')
-        .get(reports.get_reports_by_type);
+        .post(reports.get_reports_by_type);
 };
