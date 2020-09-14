@@ -1,16 +1,9 @@
 <template>
-  <v-card
-    class="mx-auto"
-  >
+  <v-card class="mx-auto">
     <v-list shaped>
-      <v-list-item-group
-        multiple
-      >
+      <v-list-item-group multiple>
         <template v-for="(item, i) in items">
-          <v-divider
-            v-if="!item"
-            :key="`divider-${i}`"
-          ></v-divider>
+          <v-divider v-if="!item" :key="`divider-${i}`"></v-divider>
 
           <v-list-item
             v-else
@@ -40,20 +33,16 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      items: [
-        'Crash',
-        'MemoryLeak',
-        'NullReference',
-        'Undefined',
-      ],
-      reportTypes: [],
-    }),
+export default {
+  data: () => ({
+    items: ["Crash", "MemoryLeak", "NullReference", "Undefined"],
+    reportTypes: [],
+  }),
 
-    methods: {
-        updateTypeList: function (type) {
-          let index = this.reportTypes.indexOf(type);
+  methods: {
+    updateTypeList: function (type) {
+      // Disabling multiselect for now
+      /*let index = this.reportTypes.indexOf(type);
           if (index > -1) {
             this.reportTypes.splice(index, 1);
           }
@@ -63,7 +52,15 @@
           console.log(this.reportTypes);
 
           this.$root.$emit('ChartContainer', this.reportTypes);
-        }
-    }
-  }
+          */
+
+      // Only allowing one type at a time until chart api method is improved
+      this.reportTypes.pop();
+      this.reportTypes.push(type);
+      console.log(this.reportTypes);
+
+      this.$root.$emit("ChartContainer", this.reportTypes);
+    },
+  },
+};
 </script>

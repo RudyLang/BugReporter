@@ -21,17 +21,16 @@ export default {
         maintainAspectRatio: false,
       },
       testData: {
-          occurencesByDate: [],
-          ocurrencesByHour: [],
-          hours: [],
-          occurencesByMinute: [],
-      }
+        occurencesByDate: [],
+        ocurrencesByHour: [],
+        hours: [],
+        occurencesByMinute: [],
+      },
     };
   },
 
   // Default to 'NullReference' report type upon mounting
   async mounted() {
-
     this.$root.$on("ChartContainer", (selectedTypes) => {
       this.updateChart(selectedTypes);
     });
@@ -54,22 +53,25 @@ export default {
         console.log(res.status);
       }
 
-        console.log(res.data);
+      console.log(res.data);
 
-        // Tally the number of occurences per hour
-        let group = res.data.reduce((occ, it) => {occ[it.hour] = occ[it.hour] + 1 || 1; return occ;}, {});
+      // Tally the number of occurences per hour
+      let group = res.data.reduce((occ, it) => {
+        occ[it.hour] = occ[it.hour] + 1 || 1;
+        return occ;
+      }, {});
 
-        console.log("Occurences by hour:");
-        
-        this.testData.ocurrencesByHour = Object.keys(group); // Extract occurences as an array
-        this.testData.hours = Object.values(group); // Extract hours as an array
-        
-        console.log(this.testData.ocurrencesByHour);
-        console.log(this.testData.hours)
+      console.log("Occurences by hour:");
+
+      this.testData.ocurrencesByHour = Object.keys(group); // Extract occurences as an array
+      this.testData.hours = Object.values(group); // Extract hours as an array
+
+      console.log(this.testData.ocurrencesByHour);
+      console.log(this.testData.hours);
 
       this.loaded = true;
 
-            this.fillChart();
+      this.fillChart();
 
       return res.data;
     } catch (err) {
@@ -98,6 +100,24 @@ export default {
           console.log(res.status);
         }
 
+        // Tally the number of occurences per hour
+        let group = res.data.reduce((occ, it) => {
+          occ[it.hour] = occ[it.hour] + 1 || 1;
+          return occ;
+        }, {});
+
+        console.log("Occurences by hour:");
+
+        this.testData.ocurrencesByHour = Object.keys(group); // Extract occurences as an array
+        this.testData.hours = Object.values(group); // Extract hours as an array
+
+        console.log(this.testData.ocurrencesByHour);
+        console.log(this.testData.hours);
+
+        this.loaded = true;
+
+        this.fillChart();
+
         this.loaded = true;
         return res.data;
       } catch (err) {
@@ -112,7 +132,7 @@ export default {
           {
             label: "NullReference",
             data: this.testData.hours,
-            borderColor: 'rgba(235, 64, 52, 1)'
+            borderColor: "rgba(235, 64, 52, 1)",
           },
         ],
       };
