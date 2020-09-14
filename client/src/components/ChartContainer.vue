@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <line-chart 
-        v-if="loaded" 
-        :chartdata="chartdata" 
-        :options="options"
-    />
+    <line-chart v-if="loaded" :chartdata="chartdata" :options="options" :styles="chartStyle" />
   </div>
 </template>
 
@@ -15,10 +11,17 @@ export default {
   name: "LineChartContainer",
   components: { LineChart },
 
-  data: () => ({
-    loaded: false,
-    chartdata: null,
-  }),
+  data() {
+    return {
+      loaded: false,
+      chartdata: null,
+      height: 400,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    };
+  },
 
   // Default to 'NullReference' report type upon mounting
   async mounted() {
@@ -90,14 +93,32 @@ export default {
           {
             label: "NullReference",
             data: [1, 4, 10],
+            borderColor: 'rgba(235, 64, 52, 1)'
           },
           {
             label: "Undefined",
             data: [2, 10, 1],
+            borderColor: 'rgba(52, 171, 235, 1)'
           },
         ],
       };
     },
   },
+
+  computed: {
+    chartStyle() {
+      return {
+        height: `${this.height}px`,
+        position: "relative",
+      };
+    },
+  },
 };
 </script>
+
+<style>
+.container {
+  max-width: 800px;
+  max-height: 400px;
+}
+</style>
