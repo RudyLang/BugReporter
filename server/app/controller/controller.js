@@ -35,6 +35,15 @@ exports.get_a_report = function (req, res) {
     });
 };
 
+exports.get_reports_by_type = function(req, res) {
+    Report.getReportsByType(req.body, function(err, report) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(report);
+    });
+};
+
 exports.update_a_report = function(req, res) {
     Report.updateByID(req.params.reportID, new Report(req.body), function(err, report) {
         if (err) {

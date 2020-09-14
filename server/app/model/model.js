@@ -29,6 +29,18 @@ Report.getReportByID = function (reportID, result) {
     });
 };
 
+Report.getReportsByType = function(reportTypes, result) {
+    let list = JSON.stringify(reportTypes.reportTypes).slice(1, -1); // reportTypes contain array, need to convert to ('a','b') format
+    mysql.query(`SELECT * FROM reports WHERE type IN (${list})`, function (err, res) {
+        if (err) {
+            result(err, null);
+        }
+        else {
+            result(null, res);
+        }
+    })
+}
+
 Report.getAllReports = function (result) {
     mysql.query("SELECT * FROM reports", function (err, res) {
         if (err) {

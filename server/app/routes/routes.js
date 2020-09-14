@@ -9,4 +9,7 @@ module.exports = function(app) {
         .get(reports.get_a_report)
         .put(reports.update_a_report)
         .delete(reports.delete_a_report);
+    
+    app.route('/filter')
+        .get(reports.get_reports_by_type);
 };
