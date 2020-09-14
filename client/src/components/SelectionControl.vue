@@ -17,7 +17,7 @@
             :key="`item-${i}`"
             :value="item"
             active-class="amber--text text--accent-1"
-            v-on:click="updateChart(item)"
+            v-on:click="updateTypeList(item)"
           >
             <template v-slot:default="{ active }">
               <v-list-item-content>
@@ -28,7 +28,7 @@
                 <v-checkbox
                   :input-value="active"
                   color="amber accent-4"
-                  v-on:click="updateChart(item)"
+                  v-on:click="updateTypeList(item)"
                 ></v-checkbox>
               </v-list-item-action>
             </template>
@@ -43,14 +43,14 @@
   export default {
     data: () => ({
       items: [
-        'Null Reference',
+        'NullReference',
         'Undefined',
       ],
       reportTypes: [],
     }),
 
     methods: {
-        updateChart: function (type) {
+        updateTypeList: function (type) {
           let index = this.reportTypes.indexOf(type);
           if (index > -1) {
             this.reportTypes.splice(index, 1);
@@ -59,6 +59,8 @@
             this.reportTypes.push(type);
           }
           console.log(this.reportTypes);
+
+          this.$root.$emit('ChartContainer', this.reportTypes);
         }
     }
   }
