@@ -19,6 +19,24 @@ export default {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "Occurences",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "Hour",
+              },
+            },
+          ],
+        },
       },
       testData: {
         occurencesByDate: [],
@@ -26,6 +44,7 @@ export default {
         hours: [],
         occurencesByMinute: [],
       },
+      reports: 'NullReference',
     };
   },
 
@@ -82,7 +101,10 @@ export default {
   methods: {
     updateChart: async function (types) {
       let parsedTypes = JSON.parse(JSON.stringify(types));
+      this.reports = parsedTypes[0];
+
       console.log(parsedTypes);
+      
       this.loaded = false;
       try {
         let res = await this.$http({
@@ -130,9 +152,9 @@ export default {
         labels: this.testData.ocurrencesByHour,
         datasets: [
           {
-            label: "NullReference",
+            label: this.reports,
             data: this.testData.hours,
-            borderColor: "rgba(235, 64, 52, 1)",
+            borderColor: "rgba(52, 171, 235, 1)",
           },
         ],
       };

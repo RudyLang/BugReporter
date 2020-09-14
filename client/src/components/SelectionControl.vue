@@ -35,7 +35,7 @@
 <script>
 export default {
   data: () => ({
-    items: ["Crash", "MemoryLeak", "NullReference", "Undefined"],
+    items: ["Crash", "MemoryLeak", "NullReference", "Undefined", "VertexShader"],
     reportTypes: [],
   }),
 
